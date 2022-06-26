@@ -12,23 +12,6 @@ namespace StudentManagement
         {
 			Batch batch = new Batch("2021 - 2022");
 
-			Console.OutputEncoding = Encoding.UTF8;
-			var data = batch.GetAllStudentsInfo();
-			string[] columnNames = data.Columns.Cast<DataColumn>()
-                                 .Select(x => x.ColumnName)
-                                 .ToArray();
-			DataRow[] rows = data.Select();
-			var table = new ConsoleTable(columnNames);
-            foreach (DataRow row in rows)
-            {
-                table.AddRow(row.ItemArray);
-            }
-            table.Write(Format.MarkDown);
-            table.Write(Format.Alternative);
-            table.Write(Format.Minimal);
-            table.Write(Format.Default);
-            Console.Read();
-
 			Application app = new Application(batch);
 			// Hard code list students
 			app.AddStudent(1, "Vinh Hoang", "Computing", 20, "GCD0903", 12);
